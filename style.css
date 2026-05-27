@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;  /* elimina scroll */
+    background-color: black;
+}
+
+#videoPlayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;  /* hace que el video cubra toda la pantalla sin bordes negros, puede recortar un poco */
+    /* Si prefieres que se vea completo pero con bordes negros, usa "contain" */
+}
