@@ -20,48 +20,50 @@ const videos = [
     "videos/videotesis19.mp4"
 ];
 
-const videoElement = document.getElementById("videoPlayer");
-let currentIndex = -1; // para saber si ya cambió
+const video1 = document.getElementById("video1");
+const video2 = document.getElementById("video2");
+let activeVideo = video1;   // el que se ve actualmente
+let inactiveVideo = video2;
+let currentIndex = -1;
 
-// Función que cambia el video según la posición del mouse (0 a 1)
 function cambiarVideoPorMouse(event) {
-    // Obtener el ancho total de la ventana
     const anchoVentana = window.innerWidth;
-    // Obtener la posición X del mouse (0 a anchoVentana)
     let mouseX = event.clientX;
-    // Calcular el índice (0 a 18)
     let indice = Math.floor((mouseX / anchoVentana) * videos.length);
-    // Asegurar que no se salga del rango
     indice = Math.min(Math.max(indice, 0), videos.length - 1);
-
-    // Solo cambiar si el índice es diferente al actual (evita recargas innecesarias)
+    
     if (indice !== currentIndex) {
         currentIndex = indice;
         const nuevaFuente = videos[currentIndex];
         
-        // Cambiar el src del video
-        videoElement.src = nuevaFuente;
-        // Reproducir (necesario porque al cambiar src se detiene)
-        videoElement.play().catch(error => {
-            // Si el navegador bloquea el autoplay, se puede mostrar un mensaje
-            console.log("Autoplay bloqueado, pero el video se activará con el mouse");
-        });
+        // El video inactivo (el que no se ve) carga el nuevo src
+        inactiveVideo.src = nuevaFuente;
+        inactiveVideo.play().catch(e => console.log("autoplay", e));
+        
+        // Hacemos fade: el inactivo se vuelve activo (opaco)
+        inactiveVideo.classList.add("active");
+        activeVideo.classList.remove("active");
+        
+        // Intercambiamos los roles
+        let temp = activeVideo;
+        activeVideo = inactiveVideo;
+        inactiveVideo = temp;
     }
 }
 
-// Escuchar el movimiento del mouse en toda la pantalla
+// Escuchar mouse
 document.addEventListener("mousemove", cambiarVideoPorMouse);
-
-// Opcional: si quieres que también funcione con el dedo en pantallas táctiles
-document.addEventListener("touchmove", function(event) {
-    const touch = event.touches[0];
-    // Crear un evento simulado
+document.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
     cambiarVideoPorMouse(touch);
 });
 
-// Inicializar con el primer video (para que no esté en negro al cargar)
-window.addEventListener("load", function() {
-    // Simular mouse en el centro de la pantalla al inicio
-    const eventoSimulado = { clientX: window.innerWidth / 2 };
-    cambiarVideoPorMouse(eventoSimulado);
+// Inicializar con el primer video
+window.addEventListener("load", () => {
+    // Cargar video inicial en el activo
+    activeVideo.src = videos[0];
+    activeVideo.play().catch(e => console.log("autoplay inicial", e));
+    activeVideo.classList.add("active");
+    inactiveVideo.classList.remove("active");
+    currentIndex = 0;
 });
