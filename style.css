@@ -7,7 +7,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     background: rgb(255, 255, 255);
 }
 
@@ -17,6 +17,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
 }
 
 .video-layer {
@@ -50,6 +51,18 @@ html, body {
     z-index: 10;
 }
 
+/* Fondo del texto (rectángulo independiente) */
+.fondo-marquee {
+    position: fixed;
+    bottom: 40%;          /* distancia desde abajo (ajústalo si quieres más arriba/abajo) */
+    left: 0;
+    width: 100%;
+    height: 180px;          /* ajusta según altura de tu texto */
+    background: rgba(255, 255, 255, 1);
+    z-index: 3;            /* debajo de las fotos (z-index 4) pero sobre videos (z-index 1) */
+    pointer-events: none;  /* para no interferir */
+}
+
 /* Contenedor del texto animado */
 .texto-marquee {
     position: fixed;
@@ -64,14 +77,14 @@ html, body {
     font-size: 10rem;       /* tamaño del texto, puedes cambiarlo */
     font-weight: bold;
     color: rgb(0, 0, 255);          /* color del texto, sobre fondo blanco se ve bien */
-    background: rgba(255, 255, 255, 1);   /*fondo semitransparente opcional, si quieres que destaque más */
+    /* background: rgba(255, 255, 255, 1); */  /*fondo semitransparente opcional, si quieres que destaque más */
     padding: -100px 0;
 }
 
 /* El texto que se mueve */
 .marquee-contenido {
     display: inline-block;
-    animation: desplazarContinua 25s linear infinite;
+    animation: desplazarContinua 28s linear infinite;
 }
 
 .marquee-contenido span {
@@ -88,4 +101,15 @@ html, body {
     100% {
         transform: translateX(-50%);  /* se mueve exactamente la mitad del ancho total (los dos textos) */
     }
+}
+
+.img-scroll {
+    position: relative;
+    z-index: 6;          /* por encima de los videos, debajo del marquee si quieres */
+    background: transparent; /* para que se vea el video detrás */
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* centra horizontalmente */
+    gap: 20px;              /* separación entre imágenes */
+    padding: 20px;
 }
