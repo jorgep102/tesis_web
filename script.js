@@ -1,69 +1,64 @@
-const videos = [
-    "videos/videotesis1.mp4",
-    "videos/videotesis2.mp4",
-    "videos/videotesis3.mp4",
-    "videos/videotesis4.mp4",
-    "videos/videotesis5.mp4",
-    "videos/videotesis6.mp4",
-    "videos/videotesis7.mp4",
-    "videos/videotesis8.mp4",
-    "videos/videotesis9.mp4",
-    "videos/videotesis10.mp4",
-    "videos/videotesis11.mp4",
-    "videos/videotesis12.mp4",
-    "videos/videotesis13.mp4",
-    "videos/videotesis14.mp4",
-    "videos/videotesis15.mp4",
-    "videos/videotesis16.mp4",
-    "videos/videotesis17.mp4",
-    "videos/videotesis18.mp4",
-    "videos/videotesis19.mp4"
-];
+const totalVideos = 26;
+const videoPaths = [];
 
-const video1 = document.getElementById("video1");
-const video2 = document.getElementById("video2");
-let activeVideo = video1;   // el que se ve actualmente
-let inactiveVideo = video2;
-let currentIndex = -1;
+// Generar rutas: asume que se llaman videotesis1.mp4 ... videotesis19.mp4
+for (let i = 1; i <= totalVideos; i++) {
+    videoPaths.push(`videos4/20sec_${i}.mp4`);
+}
 
+const container = document.getElementById('videoContainer');
+let videos = [];          // almacenará los elementos <video>
+let currentIndex = 0;
+
+// Crear los 19 videos, uno por uno
+videoPaths.forEach((path, idx) => {
+    const video = document.createElement('video');
+    video.src = path;
+    video.classList.add('video-layer');
+    if (idx === 0) video.classList.add('active');   // el primero visible
+    video.autoplay = true;
+    video.muted = true;          // obligatorio para autoplay
+    video.loop = true;           // repite en bucle
+    video.playsInline = true;    // evita pantalla completa en móvil
+    container.appendChild(video);
+    videos.push(video);
+});
+
+// Función que cambia el video visible según la posición X del mouse
 function cambiarVideoPorMouse(event) {
     const anchoVentana = window.innerWidth;
     let mouseX = event.clientX;
-    let indice = Math.floor((mouseX / anchoVentana) * videos.length);
-    indice = Math.min(Math.max(indice, 0), videos.length - 1);
-    
-    if (indice !== currentIndex) {
-        currentIndex = indice;
-        const nuevaFuente = videos[currentIndex];
-        
-        // El video inactivo (el que no se ve) carga el nuevo src
-        inactiveVideo.src = nuevaFuente;
-        inactiveVideo.play().catch(e => console.log("autoplay", e));
-        
-        // Hacemos fade: el inactivo se vuelve activo (opaco)
-        inactiveVideo.classList.add("active");
-        activeVideo.classList.remove("active");
-        
-        // Intercambiamos los roles
-        let temp = activeVideo;
-        activeVideo = inactiveVideo;
-        inactiveVideo = temp;
+    let nuevoIndice = Math.floor((mouseX / anchoVentana) * totalVideos);
+    nuevoIndice = Math.min(Math.max(nuevoIndice, 0), totalVideos - 1);
+
+    if (nuevoIndice !== currentIndex) {
+        // Ocultar el actual
+        videos[currentIndex].classList.remove('active');
+        // Mostrar el nuevo
+        videos[nuevoIndice].classList.add('active');
+        currentIndex = nuevoIndice;
+
+        // Por si el navegador pausó el video recién mostrado, lo reanudamos
+        videos[currentIndex].play().catch(e => console.log("autoplay", e));
     }
 }
 
-// Escuchar mouse
-document.addEventListener("mousemove", cambiarVideoPorMouse);
-document.addEventListener("touchmove", (e) => {
+// Evento para ratón
+document.addEventListener('mousemove', cambiarVideoPorMouse);
+
+// Evento para pantallas táctiles (arrastrar el dedo)
+document.addEventListener('touchmove', (e) => {
     const touch = e.touches[0];
     cambiarVideoPorMouse(touch);
 });
 
-// Inicializar con el primer video
-window.addEventListener("load", () => {
-    // Cargar video inicial en el activo
-    activeVideo.src = videos[0];
-    activeVideo.play().catch(e => console.log("autoplay inicial", e));
-    activeVideo.classList.add("active");
-    inactiveVideo.classList.remove("active");
-    currentIndex = 0;
+// Al cargar la página, reproducir todos los videos (importante para que estén en loop)
+window.addEventListener('load', () => {
+    videos.forEach(video => {
+        video.play().catch(e => console.log("No se pudo reproducir automáticamente", video.src));
+    });
+    
+    // Opcional: colocar el mouse virtualmente en el centro para que muestre el video intermedio
+    const eventoSimulado = { clientX: window.innerWidth / 2 };
+    cambiarVideoPorMouse(eventoSimulado);
 });
