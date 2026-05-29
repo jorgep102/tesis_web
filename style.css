@@ -8,7 +8,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: black;
+    background: rgb(255, 255, 255);
 }
 
 .video-container {
@@ -21,11 +21,12 @@ html, body {
 
 .video-layer {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     width: 100%;
     height: 100%;
-    object-fit: cover;          /* cubre toda la pantalla */
+    transform: translate(-50%, -50%);
+    object-fit: fill;          /* cubre toda la pantalla */
     opacity: 0;                 /* oculto por defecto */
     /* Sin transition, el cambio es brusco (instantáneo) */
 }
@@ -47,4 +48,44 @@ html, body {
     font-size: 14px;
     pointer-events: none;
     z-index: 10;
+}
+
+/* Contenedor del texto animado */
+.texto-marquee {
+    position: fixed;
+    bottom: 40%;          /* distancia desde abajo (ajústalo si quieres más arriba/abajo) */
+    left: 0;
+    width: 100%;
+    overflow: hidden;      /* oculta lo que se sale de la pantalla */
+    white-space: nowrap;   /* evita que el texto haga salto de línea */
+    z-index: 20;           /* asegura que esté por encima de los videos */
+    pointer-events: none;  /* para que el texto no interfiera con el mouse (los videos siguen reaccionando) */
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 10rem;       /* tamaño del texto, puedes cambiarlo */
+    font-weight: bold;
+    color: rgb(0, 0, 255);          /* color del texto, sobre fondo blanco se ve bien */
+    background: rgba(255, 255, 255, 1);   /*fondo semitransparente opcional, si quieres que destaque más */
+    padding: -100px 0;
+}
+
+/* El texto que se mueve */
+.marquee-contenido {
+    display: inline-block;
+    animation: desplazarContinua 25s linear infinite;
+}
+
+.marquee-contenido span {
+    display: inline-block;
+    padding-right: 2rem;   /* separación entre las dos repeticiones, ajusta a gusto */
+}
+
+
+/*  Animación continua */
+@keyframes desplazarContinua {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);  /* se mueve exactamente la mitad del ancho total (los dos textos) */
+    }
 }
