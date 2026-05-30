@@ -84,7 +84,7 @@ html, body {
 /* El texto que se mueve */
 .marquee-contenido {
     display: inline-block;
-    animation: desplazarContinua 28s linear infinite;
+    animation: desplazarContinua 33s linear infinite;
 }
 
 .marquee-contenido span {
@@ -110,6 +110,6 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;    /* centra horizontalmente */
-    gap: 20px;              /* separación entre imágenes */
+    gap: 100px;              /* separación entre imágenes */
     padding: 20px;
 }
