@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texto Animado | GIF de palabras</title>
+    <link rel="stylesheet" href="styleblanco.css">
+</head>
+
+<body>
+
+    <body>
+        
+    <div class="contenedor-texto">
+        <div id="texto-animado">Cargando...</div>
+    </div>
+
+    <script>
+        const textos = [
+            "I started 120 lbs & 5'9 soaking wet when I found this sub. My days consisted of smoking weed and playing video games all day when I wasn't working at my shitty dead end job in the food industry. No college, no girlfriends, no social life, just a never ending cycle of wake up depressed, drown it out with weed and video games, staying up til' I couldn't keep my eyes open. Rise and repeat. I could go on in detail, but you already know what I'm going to say cause most of you have been there",
+            "Un poco sobre mí: Empecé pesando 120 libras y midiendo 5'9 (1.75 m), flaco como un espárrago, cuando encontré este subreddit. Mis días consistían en fumar marihuana y jugar videojuegos todo el día cuando no estaba trabajando en mi miserable trabajo sin futuro en la industria alimentaria. Sin estudios universitarios, sin novias, sin vida social, solo un ciclo interminable de despertar deprimido, ahogarlo con marihuana y videojuegos, quedarme despierto hasta no poder mantener los ojos abiertos. Levántate y repite. Podría seguir con detalles, pero ya sabes lo que voy a decir porque la mayoría de ustedes han pasado por eso.",
+            "私について少し話すと、このサブレディットを見つけた当時、身長5フィート9インチ（175cm）、体重120ポンド（約54kg）で、びしょ濡れの棒のように痩せていました。毎日といえば、飲食業の行き止まりのくだらない仕事をしていない時は、マリファナを吸って一日中ビデオゲームをやっていました。大学にも行かず、彼女もいず、社会での付き合いもなく、ただ終わりのない繰り返しでした。憂鬱な気分で目覚め、マリファナとゲームでそれをかき消し、目を開けていられなくなるまで夜更かしする。起きてまた繰り返す。詳しく話そうと思えばもっと話せますが、皆さんはもう私が何を言おうとしているか分かっています。ほとんどの人が同じ経験をしているからです。"
+        ];
+    let idx = 0;
+        const elemento = document.getElementById("texto-animado");
+        elemento.innerHTML = textos[0];
+        
+        elemento.addEventListener("click", () => {
+            window.location.href = "index.html";
+        });
+        
+        function cambiar() {
+            idx = (idx + 1) % textos.length;
+            elemento.innerHTML = textos[idx];
+        }
+        
+        setInterval(cambiar, 7000);
+        
+        elemento.addEventListener("mouseenter", () => {
+            elemento.classList.add("con-hover");
+            document.body.classList.add("fondo-oscuro");
+        });
+        elemento.addEventListener("mouseleave", () => {
+            elemento.classList.remove("con-hover");
+            document.body.classList.remove("fondo-oscuro");
+        });
+    </script>
+</body>
+</html>

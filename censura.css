@@ -1,0 +1,58 @@
+/* ---------- RESET Y ESTILOS BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            color: rgb(255, 255, 255);
+            background: rgb(0, 0, 255);
+            min-height: 100vh;
+            display: flex;
+            justify-content: left;
+            /*align-items: center;
+             padding: 2rem; */
+        }
+
+        /* Contenedor principal que permite scroll vertical de página si es necesario 
+        .wrapper {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            padding: 2rem;
+        } */
+
+        /* Título o descripción (opcional) 
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .info {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+         /* 
+            CONTENEDOR DEL TEXTO DINÁMICO
+            - Altura fija (300px) para que la página NO cambie de tamaño.
+            - overflow-y: auto → si el texto es muy largo, aparece scroll interno.
+            - padding y bordes redondeados para que se vea bien.
+        
+        .dynamic-content {
+            background: #1e1e2f;
+            color: #f0f0f0;
+            border-radius: 20px;
+            padding: 1.5rem;
+            height: 300px;          
+             } */
+
+

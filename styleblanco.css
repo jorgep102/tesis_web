@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* El cuerpo ocupa toda la altura de la ventana y centra su contenido */
+body {
+    height: 100vh;
+    /* 100% de la altura visible */
+    display: flex;
+    /* Usamos flexbox para centrar */
+    justify-content: left;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    background: rgb(255, 255, 255);
+    font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Contenedor del texto animado 
+.contenedor-texto {
+    text-align: center;
+} */
+
+/* 
+            El texto que cambia (hi, hola, bonjour) 
+            Estilos base + transición suave para los cambios de clase
+        */
+#texto-animado {
+    font-size: 0.9rem;
+    /* Tamaño grande */
+    font-weight: regular;
+    /* Negrita */
+    /* padding: 20px 40px; */
+    /* Espacio interno alrededor del texto */
+    /* border-radius: 20px; */
+    /* Bordes redondeados */
+    /* display: inline-block;
+    /* Permite que el fondo se ajuste al texto */
+    /* transition: all 0.3s ease;
+    /* Suaviza cualquier cambio de propiedad (color, fondo, etc.) */
+    cursor: pointer;
+    /* Cambia el cursor a mano al pasar por encima */
+}
+
+/* 
+            CLASE NORMAL (sin hover) 
+            Definimos colores normales y fondo semitransparente
+        */
+#texto-animado {
+    /* Blanco con 80% opacidad */
+    color: rgb(0, 0, 0);
+    /* Naranja */
+    /* Sombra suave */
+}
+
+/* 
+            CLASE "hover" que se añade con JavaScript 
+            Cuando el mouse está encima, se aplican estos colores
+        */
+#texto-animado.con-hover {
+    /*background: #ff0000;
+     Fondo rojo */
+    
+    color: rgb(0, 0, 255);
+    /*-webkit-text-stroke:5px rgb(0, 0, 255);*/
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 0.8;
+    /*Texto blanco */
+    transform: scaleY(5) scaleX(3);
+    text-transform: uppercase;
+  
+    /*transform: scale(2);
+    /* Efecto de aumento ligero (opcional) */
+}
+
+body.fondo-oscuro {
+    background: rgb(255, 0, 0);          /* Color oscuro de ejemplo */
+
+}
+
