@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* El cuerpo ocupa toda la altura de la ventana y centra su contenido */
+body {
+    height: 100vh;
+    /* 100% de la altura visible */
+    display: flex;
+    /* Usamos flexbox para centrar */
+    justify-content: center;
+    /* Centra horizontalmente */
+    align-items: center;
+    /* Centra verticalmente */
+    background: rgb(0, 0, 0);
+    font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Contenedor del texto animado 
+.contenedor-texto {
+    text-align: center;
+} */
+
+/* 
+            El texto que cambia (hi, hola, bonjour) 
+            Estilos base + transición suave para los cambios de clase
+        */
+
+
+/* 
+            CLASE NORMAL (sin hover) 
+            Definimos colores normales y fondo semitransparente
+        */
+#texto-animado {
+    font-size: 3rem;
+    /* Tamaño grande */
+    font-weight: regular;
+    /* Blanco con 80% opacidad */
+    color: rgb(255, 255, 255);
+    /*text-transform: uppercase;*/
+    transform: scaleY(2);
+    /* Naranja */
+    /* Sombra suave */
+    cursor: pointer;
+}
+
+/* 
+            CLASE "hover" que se añade con JavaScript 
+            Cuando el mouse está encima, se aplican estos colores
+        */
+#texto-animado.con-hover {
+    /*background: #ff0000;
+     Fondo rojo */
+    
+    color: rgb(0, 0, 255);
+    /*-webkit-text-stroke:5px rgb(0, 0, 255);*/
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 0.8;
+    /*Texto blanco */
+    transform: scaleY(2);
+    /*text-transform: uppercase;
+  
+    /*transform: scale(2);
+    /* Efecto de aumento ligero (opcional) */
+}
+
+body.fondo-oscuro {
+    background: rgb(255, 255, 255);          /* Color oscuro de ejemplo */
+
+}
+
+.img-ser {
+    position: fixed;
+    background: transparent;
+    align-items: center;
+    z-index: -1;
+
+}

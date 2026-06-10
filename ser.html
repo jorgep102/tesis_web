@@ -1,11 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>2</title>
+    <link rel="stylesheet" href="ser.css">
 </head>
+
 <body>
-    
+
+    <body>
+        
+    <div class="contenedor-texto">
+        <div id="texto-animado">Cargando...</div>
+    </div>
+
+    <div class="img-ser">
+
+        <img src="img/imgtesis9.png" alt="">
+       
+       
+    </div>
+
+    <script>
+        const textos = [
+            "¿Estás solo y deseas tener a alguien en tu vida?",
+            "Es-tu seul et souhaites-tu avoir quelqu’un dans ta vie ?",
+            "Are you lonely and wish you had someone in your life?",
+            "你感到孤独，希望生活中有人陪伴吗？",
+            "Você está sozinho e deseja ter alguém na sua vida?"
+
+        ];
+    let idx = 0;
+        const elemento = document.getElementById("texto-animado");
+        elemento.innerHTML = textos[0];
+        
+        elemento.addEventListener("click", () => {
+            window.location.href = "censura.html";
+        });
+        
+        function cambiar() {
+            idx = (idx + 1) % textos.length;
+            elemento.innerHTML = textos[idx];
+        }
+        
+        setInterval(cambiar, 2000);
+        
+        elemento.addEventListener("mouseenter", () => {
+            elemento.classList.add("con-hover");
+            document.body.classList.add("fondo-oscuro");
+        });
+        elemento.addEventListener("mouseleave", () => {
+            elemento.classList.remove("con-hover");
+            document.body.classList.remove("fondo-oscuro");
+        });
+    </script>
 </body>
 </html>

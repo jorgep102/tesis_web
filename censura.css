@@ -7,11 +7,14 @@
 
         body {
             font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 5rem;
+            line-height: 0.8;
             color: rgb(255, 255, 255);
             background: rgb(0, 0, 255);
             min-height: 100vh;
             display: flex;
             justify-content: left;
+            
             /*align-items: center;
              padding: 2rem; */
         }
