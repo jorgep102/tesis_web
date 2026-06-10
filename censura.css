@@ -19,6 +19,25 @@
              padding: 2rem; */
         }
 
+       .imagenes-fijas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none; /* Para que no interfiera con clics en la página */
+    
+}
+
+.imagen-activa {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;     /* Si quieres que se deforme sin recortes, o usa 'cover' o 'contain' según prefieras */
+    display: block;
+    
+}
+
         /* Contenedor principal que permite scroll vertical de página si es necesario 
         .wrapper {
             max-width: 800px;

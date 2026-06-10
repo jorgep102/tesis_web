@@ -14,7 +14,7 @@ body {
     /* Centra horizontalmente */
     align-items: center;
     /* Centra verticalmente */
-    background: rgb(0, 0, 0);
+    background: rgb(0, 0, 255);
     font-family: 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -34,16 +34,18 @@ body {
             Definimos colores normales y fondo semitransparente
         */
 #texto-animado {
-    font-size: 3rem;
+    font-size: 20rem;
     /* Tamaño grande */
     font-weight: regular;
     /* Blanco con 80% opacidad */
     color: rgb(255, 255, 255);
     /*text-transform: uppercase;*/
-    transform: scaleY(2);
+    transform: scaleY(1);
     /* Naranja */
     /* Sombra suave */
     cursor: pointer;
+    text-transform: uppercase;
+    
 }
 
 /* 
@@ -56,11 +58,11 @@ body {
     
     color: rgb(255, 0, 0);
     /*-webkit-text-stroke:5px rgb(0, 0, 255);*/
-    font-size: 3rem;
+    font-size: 10rem;
     font-weight: 800;
     line-height: 0.8;
     /*Texto blanco */
-    transform: scaleY(2);
+    transform: scaleY(4);
     /*text-transform: uppercase;
   
     /*transform: scale(2);
@@ -68,14 +70,7 @@ body {
 }
 
 body.fondo-oscuro {
-    background: rgb(255, 255, 255);          /* Color oscuro de ejemplo */
+    background: rgb(0, 0, 0);          /* Color oscuro de ejemplo */
 
 }
 
-.img-ser {
-    position: fixed;
-    background: transparent;
-    align-items: center;
-    z-index: -1;
-
-}

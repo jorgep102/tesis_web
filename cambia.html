@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cambia</title>
+    <link rel="stylesheet" href="cambia.css">
+</head>
+
+<body>
+
+    <body>
+        
+    <div class="contenedor-texto">
+        <div id="texto-animado">Cargando...</div>
+    </div>
+
+    
+
+    <script>
+        const textos = [
+            "меняй",
+            "change",
+            "ändere",
+            "変えて ",
+            "muda",
+            "cambia"
+
+        ];
+    let idx = 0;
+        const elemento = document.getElementById("texto-animado");
+        elemento.innerHTML = textos[0];
+        
+        elemento.addEventListener("click", () => {
+            window.location.href = "censura.html";
+        });
+        
+        function cambiar() {
+            idx = (idx + 1) % textos.length;
+            elemento.innerHTML = textos[idx];
+        }
+        
+        setInterval(cambiar, 100);
+        
+        elemento.addEventListener("mouseenter", () => {
+            elemento.classList.add("con-hover");
+            document.body.classList.add("fondo-oscuro");
+        });
+        elemento.addEventListener("mouseleave", () => {
+            elemento.classList.remove("con-hover");
+            document.body.classList.remove("fondo-oscuro");
+        });
+    </script>
+</body>
+</html>

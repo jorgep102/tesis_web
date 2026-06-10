@@ -62,3 +62,7 @@ window.addEventListener('load', () => {
     const eventoSimulado = { clientX: window.innerWidth / 2 };
     cambiarVideoPorMouse(eventoSimulado);
 });
+
+document.body.addEventListener('click', function() {
+    window.location.href = 'cambia.html'; // Cambia por la URL deseada
+});
