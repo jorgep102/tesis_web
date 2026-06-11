@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>cnsura</title>
+    <link rel="stylesheet" href="looksmax.css">
+</head>
+
+<body>
+    <main>
+
+
+        <!-- 
+            Contenedor principal.
+            IMPORTANTE: El atributo data-textos contiene un array JSON con los textos.
+            Puedes usar comillas dobles dentro de las simples exteriores.
+            Si el texto tiene comillas, escápalas con \"
+        -->
+        <div id="textoDinamico" class="texto-variable" data-textos='[
+                "“Why do these guys care so much about looks? Isn’t that what girls do? Guys just have to be confident! Girls are less visual and care way more about personality than looks.”This is a lie, a blatant one at that. You see, what dating coaches try to do is twist reality to fit their needs. “Girls aren’t visually stimulated, so you have to have a good personality blah blah.”What it truly means IS: “Girls only have strong sexual desires for the top 10-20 percent of men, they are more visually pickier than men, who would fuck nearly anything.”Alright, let´s run you through some examples of scenarios where the way you LOOK affects the way girls react. Imagine you are a girl (or if you are, be entirely honest with yourself, what is your very first reaction?)",
+                "Masculine facial features are not as polarized as most male gaze copers believe; pronounced eyebrows, jawline and cheekbones are enough to qualify a face as masculine, and plenty of prettyboys show these features. Still, average levels of masculinity are preferred, leaning towards feminine.",
+                "If you made a girl laugh today (because you know you have to entertain a girl knowing otherwise she wouldn´t give a shit about you), and you’re ugly, she’ll go home tonight without a lasting thought of you in her mind.",
+                "Natty lifting is cope. JFL at spending a decade training optimally to end up as looking like someone that has just ended his first cycle. If you’re serious about Looksmaxing, you,re going to take every shortcut to achieve your goal. Why should I give a shit about roiding? A body halo is required for both female attention and male respect. If you have the body of a prepubescent boy, no one will take you seriously. You’ll be the \"friend\", but never the guy she’s looking for.",
+                "If you were hot and said the same joke, she’d be writing about you in her diary, texting her friends about you about how funny you are. She’d stalk your Instagram and try to find out more about you. The shape of your skull is the only difference..."
+                
+             ]'>
+        </div>
+
+
+        <div id="carruselAutomatico" class="imagenes-fijas"
+            data-imagenes='["img/ks1.png","img/ks2.png","img/ks3.png","img/ks4.png","img/ks5.png","img/ks6.png"]'>
+        </div>
+
+
+
+    </main>
+
+    <script src="textosmouse.js"></script>
+    <script src="imgtiempolnto.js"></script>
+
+    <script>
+        // Función que se ejecuta cada vez que el usuario hace scroll
+        window.addEventListener('scroll', function () {
+            // Altura total de la página (incluyendo contenido no visible)
+            const alturaTotal = document.documentElement.scrollHeight;
+            // Altura visible de la ventana
+            const alturaVisible = window.innerHeight;
+            // Cuánto se ha desplazado desde arriba
+            const desplazamiento = window.scrollY;
+
+            // Si el scroll ha llegado al fondo (con un pequeño margen de 5px)
+            if (desplazamiento + alturaVisible >= alturaTotal - 5) {
+                // Cambia 'otra-pagina.html' por la URL deseada
+                window.location.href = 'triste.html';
+            }
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

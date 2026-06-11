@@ -34,7 +34,7 @@ body {
             Definimos colores normales y fondo semitransparente
         */
 #texto-animado {
-    font-size: 20rem;
+    font-size: 4rem;
     /* Tamaño grande */
     font-weight: regular;
     /* Blanco con 80% opacidad */
@@ -44,7 +44,7 @@ body {
     /* Naranja */
     /* Sombra suave */
     cursor: pointer;
-    text-transform: uppercase;
+    
     
 }
 
@@ -63,8 +63,8 @@ body {
     line-height: 0.8;
     /*Texto blanco */
     transform: scaleY(4);
-    /*text-transform: uppercase;
-  
+    /*text-transform: uppercase;*/
+    text-transform: uppercase;
     /*transform: scale(2);
     /* Efecto de aumento ligero (opcional) */
 }

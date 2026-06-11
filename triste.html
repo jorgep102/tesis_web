@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>triste</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 4rem;
+            line-height: 0.7;
+            color: rgb(255, 255, 255);
+            background: rgb(0, 0, 0);
+            min-height: 100vh;
+            display: flex;
+            justify-content: left;
+
+            /*align-items: center;
+             padding: 2rem; */
+        }
+
+        .texto-centrado {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            /* centra horizontalmente */
+            /*align-items: center; */
+            z-index: 1;
+            /* centra verticalmente */
+            height: 100vh;
+            /* ocupa toda la altura de la ventana */
+            text-align: left;
+            /* por si el texto ocupa varias líneas */
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 1.6rem;
+            color: rgb(0, 0, 255);
+
+
+            transform: scaleY(1);
+            /* opcional, para ver el contraste */
+
+            margin-right: 30%;
+            margin-top: 100px;
+        }
+
+        .texto-centrado p {
+            margin-bottom: 20rem;
+            /* espacio entre los dos párrafos */
+            line-height: 4;
+            /* altura de línea más legible (antes 3 era enorme) */
+        }
+
+        /* Video de fondo fijo */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Contenedor de la imagen final (inicialmente oculta) */
+        .imagen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+            /* separación del texto anterior */
+        }
+
+        /* Contenedor de la imagen */
+        .imagen-overlay .contenido-imagen {
+            text-align: center;
+        }
+
+        .imagen-overlay img {
+            width: 300px;
+            /* ajusta a tu gusto */
+            height: auto;
+            border-radius: 20px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .imagen-overlay img:hover {
+            transform: scale(1);
+        }
+
+        .imagen-final a {
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .imagen-final img {
+            width: 250px;
+            /* o el tamaño que quieras */
+            height: auto;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .imagen-final img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+
+
+        <div class="texto-centrado">
+            <p>
+                When I talk to foids on Snapchat or any girl I’ve known they’re always “talking to someone” or I have a
+                “boyfriend” at what point do I keep believing this shit? Why do these foids act so high and mighty and
+                powerful and act like I have to appeal to them and jester around just to get a chance, Fuck that.
+            </p>
+
+            <p>
+                I used to watch those teenage romantic shows and movies when I was younger I had always dreamed of
+                experiencing that kind of relationship, but it never worked out since I’m not genetically gifted...
+                Growing up ruined all my childhood dreams
+            </p>
+
+            <p>
+                I hate the fact that nobody understands us and why we have the views we have. They don’t understand all
+                the shit foids have done to us throughout our lives. It just goes to show you how easy foids have it in
+                society and they complain about nothing.
+            </p>
+
+            <p>
+                What a brutal life, I'll never be happy in this life, this cursed genetics ruined me, Chernobyl
+                genetics, I can't look at myself in the mirror, I've broken them all, I looked in the mirror and felt
+                like crying so much, what a pathetic and subhuman life, 
+            </p>
+
+            <p>
+                The more I live the more the idea of suicide gets more and more acceptable. I don't see how I could
+                possibly get to live to 30. First time ever in my life had I been thinking of suicide and getting those
+                chills inside my body, those butterflies foids get whenever they think of CHAD. I shall dispose of
+                myself soon.
+            </p>
+        </div>
+
+        <!-- 
+
+        <div id="carruselAutomatico" class="imagenes-fijas"
+            data-imagenes='["img/pp1.png","img/pp2.png","img/pp3.png","img/pp4.png","img/pp5.png","img/pp6.png"]'>
+        </div>
+
+ -->
+        <!-- Video de fondo (sin sonido, se activa con hover de la imagen) -->
+        <video id="bgVideo" class="bg-video" autoplay muted loop playsinline></video>
+
+
+        <!-- Imagen única que aparecerá al final del scroll -->
+        <div id="imagenFinalOverlay" class="imagen-overlay">
+            <div class="contenido-imagen">
+            <a href="revolu.html" id="enlaceImagen" data-video="videos/tiro.mp4">
+                <img src="img/imgtesis3.png" alt="Imagen final">
+            </a>
+            </div>
+        </div>
+
+    </main>
+
+
+    <script src="imgtiempolnto.js"></script>
+
+    <script>
+    (function() {
+        const video = document.getElementById('bgVideo');
+        const overlay = document.getElementById('imagenFinalOverlay');
+        const enlace = document.getElementById('enlaceImagen');
+        const indicador = document.getElementById('indicadorScroll');
+        let videoActual = '';
+        let yaMostrado = false;
+
+        if (!enlace || !overlay) return;
+
+        const videoSrc = enlace.getAttribute('data-video');
+
+        // Al pasar el mouse sobre la imagen, cambia el video de fondo
+        enlace.addEventListener('mouseenter', () => {
+            if (videoSrc && videoSrc !== videoActual) {
+                videoActual = videoSrc;
+                video.src = videoSrc;
+                video.play().catch(e => console.log("autoplay", e));
+            }
+        });
+
+        // Al salir, puedes limpiar el video o dejarlo (opcional)
+        enlace.addEventListener('mouseleave', () => {
+            // video.pause();  // si quieres que se pause al salir
+            // video.src = ''; // si quieres que se borre
+        });
+
+        // Función que detecta final del scroll
+        function checkScrollEnd() {
+            if (yaMostrado) return;
+            const alturaTotal = document.documentElement.scrollHeight;
+            const alturaVisible = window.innerHeight;
+            const desplazamiento = window.scrollY;
+
+            // Si llegó al fondo (con 5px de margen)
+            if (desplazamiento + alturaVisible >= alturaTotal - 5) {
+                yaMostrado = true;
+                overlay.style.display = 'flex';
+                if (indicador) indicador.innerHTML = '✅ Haz clic en la imagen para continuar ✅';
+                // Opcional: scroll suave hasta el overlay (pero está fijo, no hace falta)
+            }
+        }
+
+        window.addEventListener('scroll', checkScrollEnd);
+        window.addEventListener('load', checkScrollEnd);
+    })();
+</script>
+
+</body>
+
+</html>

@@ -42,7 +42,7 @@
     imgElement.src = imagenes[0];
 
     // Configurar el intervalo de tiempo (cada 3 segundos)
-    const intervalo = setInterval(siguienteImagen, 150); // Cambia 3000 por los milisegundos que quieras
+    const intervalo = setInterval(siguienteImagen, 2000); // Cambia 3000 por los milisegundos que quieras
 
     // Opcional: detener el carrusel si la página se descarga (buena práctica)
     window.addEventListener("beforeunload", function() {

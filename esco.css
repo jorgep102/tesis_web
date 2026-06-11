@@ -1,0 +1,56 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: rgb(255, 255, 255); /* color inicial */
+            display: flex;
+            justify-content: center;
+            align-items: top;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+        }
+
+
+
+         /* Video de fondo fijo */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none; /* evita que interfiera con clics en las imágenes */
+        }
+
+        /* Contenedor de las imágenes (centrado con flex) */
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20rem;
+            padding: 0rem;
+            z-index: 1;
+        }
+
+        /* Enlace que contiene la imagen (sin estilos extra) */
+        .menu a {
+            display: block;
+            text-decoration: none;
+            line-height: 0; /* elimina espacio bajo la imagen */
+        }
+
+        /* Imagen: sin bordes, sin sombra, sin fondo, sin marco */
+        .menu img {
+            width: 100px;
+            height: 300px;
+            object-fit: fill;  /* rellena el cuadrado sin deformar (recorta un poco) */
+            display: block;
+           
+        }
+        
