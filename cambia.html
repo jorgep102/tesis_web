@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,49 +8,68 @@
     <link rel="stylesheet" href="cambia.css">
 </head>
 
-<body>
 
-    <body>
-        
-    <div class="contenedor-texto">
-        <div id="texto-animado">Cargando...</div>
-    </div>
 
-    
+<div class="contenedor-texto">
+    <div id="texto-animado">Cargando...</div>
+</div>
 
-    <script>
-        const textos = [
-            "меняй",
-            "change",
-            "ändere",
-            "変えて ",
-            "muda",
-            "cambia"
 
-        ];
+
+
+
+
+<script>
+    const textos = [
+        "власть",
+        "power",
+        "poder",
+        "权力",
+        "macht",
+        "poder"
+
+    ];
     let idx = 0;
-        const elemento = document.getElementById("texto-animado");
-        elemento.innerHTML = textos[0];
-        
-        elemento.addEventListener("click", () => {
-            window.location.href = "esco.html";
-        });
-        
-        function cambiar() {
-            idx = (idx + 1) % textos.length;
-            elemento.innerHTML = textos[idx];
+    const elemento = document.getElementById("texto-animado");
+    elemento.innerHTML = textos[0];
+
+    elemento.addEventListener("click", () => {
+        window.location.href = "esco.html";
+    });
+
+    function cambiar() {
+        idx = (idx + 1) % textos.length;
+        elemento.innerHTML = textos[idx];
+    }
+
+    setInterval(cambiar, 100);
+
+    elemento.addEventListener("mouseenter", () => {
+        elemento.classList.add("con-hover");
+        document.body.classList.add("fondo-oscuro");
+    });
+    elemento.addEventListener("mouseleave", () => {
+        elemento.classList.remove("con-hover");
+        document.body.classList.remove("fondo-oscuro");
+    });
+
+    document.addEventListener('click', function (event) {
+        const anchoPantalla = window.innerWidth;
+        const x = event.clientX;          // posición X del clic
+        const porcentaje = (x / anchoPantalla) * 100;
+
+        if (porcentaje < 25) {
+            // Clic en el 25% izquierdo de la pantalla
+            window.location.href = 'ser.html';
+        } else if (porcentaje > 75) {
+            // Clic en el 25% derecho de la pantalla
+            window.location.href = 'looksmax.html';
         }
-        
-        setInterval(cambiar, 100);
-        
-        elemento.addEventListener("mouseenter", () => {
-            elemento.classList.add("con-hover");
-            document.body.classList.add("fondo-oscuro");
-        });
-        elemento.addEventListener("mouseleave", () => {
-            elemento.classList.remove("con-hover");
-            document.body.classList.remove("fondo-oscuro");
-        });
-    </script>
+        // Si está entre 25% y 75%, no hace nada (opcional: puedes poner otra acción)
+    });
+
+</script>
+
 </body>
+
 </html>
