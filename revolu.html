@@ -30,12 +30,12 @@
         .texto-centrado {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+
             /* centra horizontalmente */
             /*align-items: center; */
             z-index: 1;
             /* centra verticalmente */
-            height: 100vh;
+
             /* ocupa toda la altura de la ventana */
             text-align: center;
             /* por si el texto ocupa varias líneas */
@@ -47,8 +47,8 @@
             transform: scaleY(1);
             /* opcional, para ver el contraste */
 
-            
-            margin-top: 100px;
+
+            margin-top: 300px;
         }
 
         .texto-centrado p {
@@ -56,6 +56,22 @@
             /* espacio entre los dos párrafos */
             line-height: 4;
             /* altura de línea más legible (antes 3 era enorme) */
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+            /* aquí sí va el object-fit */
         }
     </style>
 
@@ -88,7 +104,13 @@
                 natural cannot be Evil and The nature of a female is inferiority.
             </p>
 
-            
+
+        </div>
+
+        <div class="video-container">
+            <video id="video" autoplay muted loop playsinline>
+                <source src="videos/Comp 1_4.mp4" type="video/mp4">
+            </video>
         </div>
 
         <!-- 
@@ -98,9 +120,7 @@
         </div>
 
  
-
-
-
+-->
 
         <script>
             // Función que se ejecuta cada vez que el usuario hace scroll
@@ -121,7 +141,7 @@
 
 
         </script>
--->
+        
 </body>
 
 </html>
